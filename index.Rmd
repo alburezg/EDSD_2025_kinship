@@ -42,7 +42,7 @@ Some useful things to know:
 
 - Find this website's source code on GitHub: https://github.com/alburezg/EDSD_2025_kinship
 
-![](Picture4.png)
+![](img/Picture4.png)
 
 <!-- Lab Session 1 -->
 ## Lab session 1 (Monday) 
@@ -51,7 +51,7 @@ Some useful things to know:
 
 We will start soon the computer lab sessions, so would be great if in advance we have prepared the R environment. First, you will need R and Rstudio installed. Second, install the DemoKin!
 
-<img src="DemoKin-Logo.png" align="right" width="200" />
+<img src="img/DemoKin-Logo.png" align="right" width="200" />
 
 #### 1. Installation
 
@@ -152,7 +152,7 @@ For today's session the data is being provided; you will download it later as ho
 ```{r 11, message=FALSE, warning=FALSE}
 # Load the .RData file
 
-load("brazil_data.RData") # px and fx - Brazil in 2023
+load("data/brazil_data.RData") # px and fx - Brazil in 2023
 ```
 
 We have to reshape fertility and mortality to create a matrix to be used by `DemoKin`(i.e., create a matrix with years as columns and ages as rows):
@@ -224,7 +224,7 @@ required_wpp_files <- c(
 )
 
 if (all(file.exists(required_wpp_files))) {
-  message("Using local WPP2024 CSV files from docs/data.")
+  message("Using local WPP2024 CSV files from data/.")
 } else {
   download_wpp24()
 }
@@ -685,7 +685,7 @@ br_pop <-
 
 With this input we can model kinship structure in Age-Period-Cohort (APC) dimensions:
 
-![](apc.png)
+![](img/apc.png)
 
 
 ##### 1.1 Cohort approach
@@ -949,11 +949,11 @@ kin_out %>%
 ##### 3.3 Time-variant two-sex kinship models
 
 We look at populations where demographic rates are not static but change on a yearly basis.
-For this, we extend the period using data located in *"docs/fra_2sex.Rdata"*, that you can load with function `load` as we did in previous days. This is UN data, so another exercise can be done with HMD and HFD going back in time.
+For this, we extend the period using data located in *"data/fra_2sex.Rdata"*, that you can load with function `load` as we did in previous days. This is UN data, so another exercise can be done with HMD and HFD going back in time.
 For this example, we will 'pretend' that male fertility rates are the same than fertility but slightly older, translating shape for the difference in the mean age observed in 2012 (that you calculated before). Actually there is some data for the period 1998-2013 in [HFD](https://www.fertilitydata.org/Data/DataAvailability), but just to keep it simple so far (and also needs to extrapolate back level and pattern).
 
 ```{r 56}
-load("fra_2sex.Rdata")
+load("data/fra_2sex.Rdata")
 years <- ncol(fra_asfr_females)
 ages <- nrow(fra_asfr_females)
 

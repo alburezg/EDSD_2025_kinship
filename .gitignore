@@ -2,7 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
-data
+data/*
+!data/brazil_data.RData
+!data/fra_2sex.Rdata
 
 # LaTeX intermediate files
 *.aux
