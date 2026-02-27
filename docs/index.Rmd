@@ -215,8 +215,19 @@ First, we will load the `download_wpp24()` function, which automates the process
 # Load the function to download data
 source("UNWPP_download.R")
 
-# Download the data
-download_wpp24()
+# Download only if local files are missing
+required_wpp_files <- c(
+  "data/WPP2024_Fertility_by_Age1.csv",
+  "data/WPP2024_Life_Table_Complete_Medium_Female_1950-2023.csv",
+  "data/WPP2024_Life_Table_Complete_Medium_Male_1950-2023.csv",
+  "data/WPP2024_Population1JanuaryBySingleAgeSex_Medium_1950-2023.csv"
+)
+
+if (all(file.exists(required_wpp_files))) {
+  message("Using local WPP2024 CSV files from docs/data.")
+} else {
+  download_wpp24()
+}
 ```
 
 After downloading the data, we can filter the information we are interested in, for example, the country of interest. To do this, we will load two functions:
