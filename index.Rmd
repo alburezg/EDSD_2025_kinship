@@ -15,6 +15,22 @@ bibliography: kinship.bib
 ---
 
 ```{r 1 setup, include=FALSE}
+# Try to locate pandoc when rendering from terminal (outside RStudio).
+if (!rmarkdown::pandoc_available()) {
+  pandoc_dirs <- c(
+    Sys.getenv("RSTUDIO_PANDOC"),
+    "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools",
+    "C:/Program Files/Pandoc",
+    file.path(Sys.getenv("LOCALAPPDATA"), "Pandoc")
+  )
+  for (d in pandoc_dirs) {
+    if (nzchar(d) && file.exists(file.path(d, "pandoc.exe"))) {
+      Sys.setenv(RSTUDIO_PANDOC = d)
+      break
+    }
+  }
+}
+
 knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE, 
                       warning = FALSE, 
