@@ -1,0 +1,13 @@
+# Fdb version 4
+["pdflatex"] 1772037249.1328 "main.tex" "main.pdf" "main" 1772037249.35006 2
+  "beamer.cls" 0 -1 0 ""
+  "c:/Users/alburezgutierrez/AppData/Roaming/TinyTeX/texmf-dist/web2c/texmf.cnf" 1741018390 42021 a58d36c7ede3d2fc9f93da62d691ddff ""
+  "c:/Users/alburezgutierrez/AppData/Roaming/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1741018390 1928905 3f8e0338e942c0dc5b2f71971d191425 ""
+  "c:/Users/alburezgutierrez/AppData/Roaming/TinyTeX/texmf.cnf" 1741018399 956 f6319605e496eb760fffc62781398a4a ""
+  "main.aux" 1772037249 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "main.tex" 1772022099 14780 6651e6c1cfe7a4993afcdea6b8ef89c3 ""
+  (generated)
+  "main.aux"
+  "main.log"
+  "main.pdf"
+  (rewritten before read)

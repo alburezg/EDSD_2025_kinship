@@ -1,0 +1,687 @@
+﻿\documentclass{beamer}
+
+% \usetheme{Pittsburgh}
+ \setbeamertemplate{enumerate items}[circle]
+%  \usetheme{Boadilla}
+\usepackage[ngerman,english]{babel}			
+\usepackage[utf8]{inputenc}				
+
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{animate}
+\usepackage{hyperref}
+\usepackage{dirtytalk} % quotes
+\usepackage{amsmath}
+
+% \usepackage{natbib}
+% \usepackage{apalike}
+% \bibliography{refs}
+
+\usepackage[style=apa]{biblatex}
+\addbibresource{refs.bib}
+
+% Define command to print full bibliography in footnote
+\newcommand{\fcite}[1]{\footnote{\fullcite{#1}}}
+
+\hypersetup{colorlinks,urlcolor=blue, linkcolor=blue}
+
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{section in toc}[sections numbered]
+\setcounter{tocdepth}{1}
+% \setbeamertemplate{subsection in toc}[subsections numbered]
+
+% LOGO TOP RIGHT
+% \usepackage{tikz}
+% \titlegraphic { 
+% \begin{tikzpicture}[overlay,remember picture]
+% \node[left=0.2cm] at (current page.30){
+%     \includegraphics[width=3cm]{figures/mpidr_logo_colour_de_1.png}
+% };
+% \end{tikzpicture}
+% }
+
+% LOGO BOTTOM RIGHT
+\titlegraphic{
+\includegraphics[width=5cm]{figures/mpidr_logo_colour_de_1.png}
+\hfill
+\includegraphics[width=3cm]{figures/edsd-logo.png}
+}
+
+% \makeatletter
+% \setbeamertemplate{navigation symbols}{}
+
+% make blocks no transparent
+\setbeamercolor{block body alerted}{bg=alerted text.fg!10}
+\setbeamercolor{block title alerted}{bg=alerted text.fg!20}
+\setbeamercolor{block body}{bg=structure!10}
+\setbeamercolor{block title}{bg=structure!20}
+\setbeamercolor{block body example}{bg=green!10}
+\setbeamercolor{block title example}{bg=green!20}
+
+
+
+%%	title page information
+
+\title[Kinship]{Kinship Structures (1)}
+\subtitle{Introduction to Kinship Demography}
+
+\author{Diego Alburez Guti\'errez$^{\dagger}$}
+
+\institute{$^{\dagger}$Kinship Inequalities Research Group, \\ Max Planck Institute for Demographic Research }
+
+\date{European Doctoral School of Demography 2024-25 \\ 18 Nov 2024}
+
+%%	Begin of the document:
+%%	======================
+
+\begin{document}
+
+ \begin{frame}[t,plain]
+ \titlepage
+ \end{frame}
+ 
+ \begin{frame}{Consider a  baby born in France in 1950...}
+     \begin{enumerate}
+         \item How old were her grandparents when she was born, on average?
+         \item How many living children did she have on her 70th birthday?
+         \item How many grandchildren?
+     \end{enumerate}
+ \end{frame}
+
+ \begin{frame}{Agenda}
+\tableofcontents
+\end{frame}
+
+\section{Course setup and evaluation}
+\begin{frame}
+    \begin{centering}
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+\end{frame}
+
+\begin{frame}{Course overview}
+
+\begin{enumerate}
+    \item Mon - ``Introduction to kinship demography''
+    \item Tue - ``The formal demography of kinship''
+    \item Wed - ``Extensions of the kinship model''
+    \item Thu - Assignment
+\end{enumerate}
+
+\vspace{1cm}
+
+Course website: See syllabus!
+    
+\end{frame}
+
+\begin{frame}{Schedule}
+
+\begin{itemize}
+    \item Meet every day 9:00-12:00 
+    \item Mon-Wed
+    \begin{itemize}
+        \item 1.5h lectures
+        \item 1.5h lab session
+    \end{itemize}
+    \item Thursday (assignment work only)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Lab session}
+       \begin{figure}[!h]
+       \centering
+\includegraphics[width =1\textwidth]{figures/pack.JPG}
+     \end{figure}
+\end{frame}
+
+
+\begin{frame}{Final assignment}
+
+\textbf{Goal}
+
+    \begin{itemize}
+        \item Hands-on experience with kinship models 
+        \item Reflect on model specifications, assumptions, and outcomes
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \textbf{Exercises}
+    
+    \begin{itemize}
+        \item Model kinship dynamics using `DemoKin` package
+        \item Benchmark models of kinship
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \textbf{See full instructions in syllabus!} 
+    
+\end{frame}
+
+\section{Introduction to kinship demography}
+\begin{frame}
+    \begin{centering}
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+\end{frame}
+
+
+\begin{frame}{Why do we need a course on kinship demography?}
+
+Kinship demography, in recent years:
+
+  \vspace{0.5cm}
+  
+   \begin{enumerate}
+       \item theoretical, methodological, and substantive developments
+       \item opportunity to advance discipline as a whole
+       \item low visibility of kinship demography
+   \end{enumerate}
+\end{frame}
+
+\begin{frame}{Great societal interest\footnote{`The age of the grandparent has arrived.'  (Jan 2023). The Economist. \url{https://www.economist.com/international/2023/01/12/the-age-of-the-grandparent-has-arrived}}}
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{figures/econ2.JPG}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{figures/econ3.JPG}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Definitions (1)\fcite{alburez-gutierrez_kinship_2022}}
+   \begin{exampleblock}{Kinship}
+        Social relationships that bind individuals together through culturally shared definitions of relatedness on biological, legal, or normative grounds, ultimately constituting family systems.
+   \end{exampleblock}
+   
+      \vspace{0.5cm}
+   
+    \begin{alertblock}{Family}
+        More narrow group of kin given special privilege which, among other things, organize the provision of support, socialization, and social placement of its members.
+  \end{alertblock}
+
+\end{frame}
+
+\begin{frame}{The role of kinship in human societies}
+   \begin{enumerate}
+       \item Socialisation, protection, and sustenance
+       \item Inter-generational solidarity: exchanges and bequests
+       \item Social structure and identity
+       \item Early-life conditions $\rightarrow$ later-life outcomes
+   \end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}{Definitions (2)\fcite{alburez-gutierrez_kinship_2022}}
+   \begin{exampleblock}{Kinship demography}
+        The study of family networks, their structures and dynamics from a demographic perspective and using demographic methods.
+   \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Kinship as a demographic human universal}
+    \begin{enumerate}
+        \item All humans are born 
+        \item All humans die
+        \item All humans are embedded in kinship structures\fcite{caswell_formal_2019}
+        \item No particular family configuration is universal or stable
+    \end{enumerate}
+\end{frame}
+
+
+% \begin{frame}{}
+% % \flushright \fcite{alburez-gutierrez_kinship_2022}     
+%      \begin{figure}[!h]
+%        \centering
+%        \includegraphics[width =1\textwidth]{figures/kinship_diag.pdf} 
+%      \end{figure}
+% \end{frame}
+
+% \begin{frame}{Examples: Kinequalities by gender and race in the US}
+% \begin{enumerate}
+%     \item Disparities in grandparental availability\fcite{margolis_cohort_2019}
+%     \item Prevalence of unemployment in family networks\fcite{song2021role}
+%     \item Effect of kin death on education\fcite{patterson_linked_2020}
+% \end{enumerate}
+% \end{frame}
+
+
+% \subsection{Fundamentals}
+% \begin{frame}
+%     \subsectionpage
+% \end{frame}
+
+
+\begin{frame}{The \textit{Strong Ergodic Principle}\fcite{sharpe_problem_1911}}
+
+    \say{A closed population with unchanging mortality and fertility rates has an \textbf{implicit age structure}.}
+    % intrinsic rate of natural increase $r$ and 
+    \vspace{0.3cm}
+    
+    The proportion of the population aged $x$ to $x+n$ in a stable population is\fcite{wachter_essential_2014}:
+    
+    \begin{equation}
+      \frac{_{n}K_{x}}{_{\infty}K_{0}} = b\frac{_{n}L_{x}}{l_{0}}e^{-rx}
+    \end{equation}
+
+\end{frame}
+
+\begin{frame}{Implied age structures using Leslie matrices}
+      \begin{figure}[!h]
+      \centering
+      \includegraphics[width =1\textwidth]{figures/leslie_pop_share.pdf}
+     \end{figure}    
+\end{frame}
+
+\begin{frame}{The demographic foundations of kin structure}
+       \begin{figure}[!h]
+       \centering
+       \includegraphics[width =1\textwidth]{figures/keyf.JPG}
+     \end{figure}
+\end{frame}
+
+
+\begin{frame}{Implied kinship structures}
+    
+\vspace{0.3cm}
+\say{A ï¬xed set of age-speciï¬c rates implies the probability that a girl aged $a$ has a living mother and great-grandmother, as well as her expected number of daughters, sisters, aunts, nieces, and cousins.}\fcite{keyfitz_applied_1985}
+\end{frame}
+
+
+\begin{frame}{Expected number of relatives (USA 1965, F, 45 yo)\fcite{keyfitz_applied_1985}}
+       \begin{figure}[!h]
+       \centering
+       \includegraphics[width =.75\textwidth]{figures/tree.JPG}
+     \end{figure}
+\end{frame}
+
+
+% \begin{frame}{Expected kin count for Swedish woman born in...\footnote{\url{http://alburez.me/DemoKin_example/}}}
+%       \begin{figure}[!h]
+%       \centering
+%       \animategraphics[width = 1\textwidth]{40}{figures/kin_count_anim}{0}{40}
+%      \end{figure}
+% \end{frame}
+
+\begin{frame}{Expected kin count for a Swedish woman\footnote{Time-invariant conditions;  \url{http://alburez.me/DemoKin_example/}}}
+       \begin{figure}[!h]
+       \centering
+       \includegraphics[width = 1\textwidth]{figures/kin_count_anim}
+     \end{figure}
+\end{frame}
+
+\begin{frame}{Observed kin count from Swedish registers\fcite{kolk_swedish_2021}}
+       \begin{figure}[!h]
+       \centering
+       \includegraphics[width =1\textwidth]{figures/stock.JPG}
+     \end{figure}
+\end{frame}
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item Kinship matters for individuals and for societies
+        \item Kinship is a demographic universal 
+        \item Implicit kinship structures in populations
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\texttt{DemoKin}: matrix kinship models in R\fcite{williams_demokin_2023}}
+
+     \begin{minipage}{0.7\textwidth}
+        \begin{itemize}
+            \item Time-(in)variant models
+            \item One/two-sex models
+            \item Multistate models
+            \item Kin loss by cause of death
+            % \item \url{https://github.com/IvanWilli/DemoKin}
+            \item More in the lab session...
+        \end{itemize}
+    \end{minipage} \hfill
+    \begin{minipage}{0.25\textwidth}
+    \begin{figure}[!h]
+       \flushright
+       \includegraphics[width =1\textwidth]{figures/DemoKin-Logo.png}
+     \end{figure}
+    \end{minipage}
+\end{frame}
+
+% -----------------------------------------------
+
+\begin{frame}{Discuss}
+    \begin{enumerate}
+        \item What is `kinship demography' and how is it different from `family demography?'
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    \huge Break
+\end{frame}
+
+\section{Example: The lived experience of kin loss, or looking at mortality through a kinship lens}
+\begin{frame}
+    \begin{centering}
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+\end{frame}
+
+\begin{frame}{Death and loss}
+    
+\say{People living through [the Covid-19 pandemic] do not experience the world by weekly rates; they perceive mortality risk through the experiences of their own social network.}\fcite{trinitapoli_demography_2021}
+    
+\end{frame}
+
+\begin{frame}{Deaths experienced at each age (Sweden 1950, F)\footnote{\url{http://alburez.me/DemoKin_example/}}}
+       \begin{figure}[!h]
+       \centering
+       \includegraphics[width =1\textwidth]{figures/deaths.jpg}
+     \end{figure}
+\end{frame}
+
+
+% -----------------------------------------------
+\subsection{Mortality $\Rightarrow$ kin loss}
+\begin{frame}
+    \begin{centering}
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsubsection\par
+    \end{beamercolorbox}
+    \end{centering}
+\end{frame}
+
+\begin{frame}{}
+       \begin{figure}[!h]
+       \centering
+       \includegraphics[width =1\textwidth]{figures/pub_dem.JPG}
+     \end{figure}
+\end{frame}
+
+\begin{frame}{Experience of child loss\fcite{alburez-gutierrez_womens_nodate}}
+
+\begin{exampleblock}{Research question}
+How can we characterise the experience of offspring loss from the vantage point of mothers?
+\end{exampleblock}
+
+ \begin{enumerate}
+     \item Methods: formal methods from kinship demography
+     \item Data: 2019 UN World Population Prospects estimates (1950-2020) and projections (2020-2100) for 201 countries 
+    %  \item Results: prevalence and incidence of offspring loss over life, across cohorts, and around the world
+ \end{enumerate}
+\end{frame}
+
+\begin{frame}{Demographic foundations of lived experience of kin loss}
+
+    \textbf{Child Death} $CD_{(a,c)}$ is the cumulative number of child deaths experienced by a woman in cohort $c$, conditional on her survival to age \textit{a}:
+    
+    \begin{equation*}
+    Children\:born_{(a,c)} = Children\:surviving_{(a,c)} + Children\:died_{(a,c)}
+    \end{equation*}
+  
+\end{frame}
+
+
+\begin{frame}{Demographic foundations of lived experience of kin loss}
+
+\textbf{Child Death} $CD_{(a,c)}$ is the cumulative number of child deaths experienced by a woman in cohort $c$, conditional on her survival to age \textit{a}:
+
+\begin{equation*}
+Children\:died_{(a,c)} = Children\:born_{(a,c)} - Children\:surviving_{(a,c)}
+\end{equation*}
+  
+\end{frame}
+
+
+% \begin{frame}{The Child Death identity}
+\begin{frame}{Demographic foundations of lived experience of kin loss}
+
+\textbf{Child Death} $CD_{(a,c)}$ is the cumulative number of child deaths experienced by a woman in cohort $c$, conditional on her survival to age \textit{a}\fcite{goodman_family_1974}:
+
+\begin{equation*}
+\label{eq:CD}
+\underbrace{CD_{(a,c)}}_{\text{Children died}} = \underbrace{\sum_{x=15}^{x=a} {_1F_{(x,c)}}}_{\text{Children born}}-\underbrace{\sum_{x=15}^{x=a} {_1F_{(x,c)}} l_{(a-x,c+x)}}_{\text{Children surviving}}
+\end{equation*}
+  
+ where
+
+\begin{itemize}
+  \item $_1F_{(x,c)}$ are age-specific fertility rates for mothers
+  \item $l_{(a-x,c+x)}$ are age-specific mortality probabilities for mother's children
+\end{itemize}
+
+\end{frame}
+
+
+% \begin{frame}{Offspring loss and survival over the life course\footnote{\textcolor{blue}{Alburez-Gutierrez, D.}, et al. (2021) ``Women's experience of child death: A global demographic perspective.'' \textbf{Demography}. Advanced Publication.}}
+% \begin{figure}[!h]
+%     \centering
+%     \includegraphics[width =0.9\textwidth]{figures/cd1.JPG}
+% \end{figure}
+% \end{frame}
+
+\begin{frame}{Offspring loss over the life course\fcite{alburez-gutierrez_womens_nodate}}
+  \begin{center}
+       \animategraphics[width = 0.65\textwidth]{10}{figures/fig2ab_trans}{0}{50}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{Offspring loss over the life course\fcite{alburez-gutierrez_womens_nodate}}
+  \begin{center}
+      \includegraphics[width = 1\textwidth]{figures/fig2ab}
+  \end{center}
+\end{frame}
+
+
+\subsection{Kin loss $\Rightarrow$ bereavement}
+\begin{frame}
+    \begin{centering}
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsubsection\par
+    \end{beamercolorbox}
+    \end{centering}
+\end{frame}
+
+\begin{frame}{}
+       \begin{figure}[!h]
+       \centering
+       \includegraphics[width =1\textwidth]{figures/pub_bmj.JPG}
+     \end{figure}
+\end{frame}
+
+\begin{frame}{How many mothers (\textperthousand) have ever lost a child?\fcite{smith-greenaway_global_2021}}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width =1\textwidth]{figures/cd2.JPG}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+       \begin{figure}[!h]
+       \centering
+       \includegraphics[width =1\textwidth]{figures/pub_pnas.JPG}
+     \end{figure}
+\end{frame}
+
+\begin{frame}{Demographic change and the lived experience of kin loss}
+   \begin{enumerate}
+       \item Excess mortality from Covid-19
+       \item Some deaths would not have happened in the absence of the pandemic
+       \item Some people would not have lost a relative (i.e., `bereaved')
+   \end{enumerate}
+   
+\end{frame}
+
+\begin{frame}{The `bereavement multiplier' approach}
+
+\say{\ldots every death from COVID-19 will leave approximately nine bereaved.}\fcite{verdery_tracking_2020}
+
+      \begin{figure}[!h]
+      \centering
+      \includegraphics[width =.5\textwidth]{figures/fig1a.pdf}
+     \end{figure}
+    
+\end{frame}
+
+\begin{frame}{`Excess bereavement': the survivor's perspective\fcite{snyder_estimates_2022}}
+      \begin{figure}[!h]
+       \centering
+       \includegraphics[width =.5\textwidth]{figures/fig1b.pdf}
+     \end{figure}
+\end{frame}
+
+
+% \begin{frame}{Kin loss in the context of Covid-19}
+%       \begin{figure}[!h]
+%       \centering
+%       \includegraphics[width =1\textwidth]{figures/covid.png}
+%      \end{figure}
+% \end{frame}
+
+
+\begin{frame}{How many people in the UK lost a relative to Covid-19?\fcite{snyder_estimates_2022}}
+      \begin{figure}[!h]
+       \centering
+       \includegraphics[width =.9\textwidth]{figures/fig2_uk.pdf}
+     \end{figure}
+\end{frame}
+
+% \begin{frame}{How many people lost a relative to Covid-19?\fcite{snyder_estimates_2022}}
+% \centering
+%     \begin{table}
+%         \begin{tabular}{llr}
+%         \toprule
+%         Kin lost & Norway & Sweden \\
+%         \midrule
+%         Grandparents & .7 & 44\\
+%         Parents & .3 & 20\\
+%         Siblings & .1 & 10\\
+%         Children & .1 & .8\\
+%         \bottomrule
+%         \end{tabular}
+%     \caption{Bereaved individuals (1000's)}
+%     \end{table}
+%     % \begin{table}
+%     %     \begin{tabular}{llr}
+%     %     \toprule
+%     %     Kin lost & Germany & UK \\
+%     %     \midrule
+%     %     Grandparents & 254 & 532\\
+%     %     Parents & 154 & 261\\
+%     %     Siblings & 825 & 143\\
+%     %     Children & 9 & 20\\
+%     %     \bottomrule
+%     %     \end{tabular}
+%     % \caption{Bereaved individuals (1000's)}
+%     % \end{table}
+% \end{frame}
+
+
+% -------------------------------------------
+
+% \subsection{Bereavement $\Rightarrow$ memory}
+% \begin{frame}
+%     \begin{centering}
+%     \begin{beamercolorbox}[sep=12pt,center]{part title}
+%     \usebeamerfont{section title}\insertsubsection\par
+%     \end{beamercolorbox}
+%     \end{centering}
+% \end{frame}
+
+% \begin{frame}{}
+%       \begin{figure}[!h]
+%       \centering
+%       \includegraphics[width =1\textwidth]{figures/pub_dem_mem.JPG}
+%      \end{figure}
+% \end{frame}
+
+% \begin{frame}{Survivors of the Rio Negro massacres\footnote{CIRMA Historical Archive, cited in Tecu Osorio (2012).}}
+% \begin{figure}[!h]
+%     \centering
+%     \includegraphics[width =.8\textwidth]{figures/idp.png}
+% \end{figure}
+% \end{frame}
+
+% \begin{frame}{Long-term consequences of genocide}
+% % \fcite{alburez-gutierrez_diego_vivir_2021}
+% \begin{figure}[!h]
+%     \centering
+%     \includegraphics[width =1\textwidth]{figures/pop_by_sex.png}
+% \end{figure}
+% \end{frame}
+
+
+% \begin{frame}{Rio Negro inhabitants by relatedness to genocide victims\fcite{alburez-gutierrez_demographic_2022}}
+% \begin{figure}[!h]
+%     \centering
+%     \includegraphics[width =1\textwidth]{figures/Fig4.pdf}
+% \end{figure}
+% \end{frame}
+
+% \begin{frame}{Demographic drivers of historical memory\footnote{Image by Vivian Guzm\'an.}}
+% \begin{figure}[!h]
+%     \centering
+%     \includegraphics[width =1\textwidth]{figures/pacoxom.jpg}
+% \end{figure}
+% \end{frame}
+
+% \begin{frame}{Summary}
+%  \begin{enumerate}
+%     \item Kinship perspective: mortality $\rightarrow$ kin loss $\rightarrow$ breavement $\rightarrow$ memory
+%      \item Mortality crises `accelerate' the experience of bereavement
+%      \item Age-sex distribution of `excess bereavement' different from excess mortality
+%      \item How are these losses experienced and how to support surviving kin?
+% \end{enumerate}
+
+
+% \begin{equation*}
+%     \text{Excess Bereavement} \approx \text{Excess Mortality} \times \text{Kinship Structure}
+% \end{equation*}
+
+% \end{frame}
+
+\begin{frame}{Mortality from a kinship perspective}
+    \begin{enumerate}
+        % \item Mortality and bereavement are different
+        \item Mortality $\Rightarrow$ kin loss $\Rightarrow$ breavement $\Rightarrow$ memory
+        \item Mortality crises `accelerate' the experience of bereavement
+        \item Implications for individuals and populations
+    \end{enumerate}
+    
+    \begin{equation*}
+        \text{Kin Loss} \approx \text{Mortality} \times \text{Kinship Structure}
+    \end{equation*}
+
+\end{frame}
+
+
+\begin{frame}{Discuss}
+    \begin{enumerate}
+        \item How could you apply a `kinship lens' to study other demographic processes?
+        \item Think of 2-3 concrete examples
+    \end{enumerate}
+\end{frame}
+
+
+% \begin{frame}{Concluding thoughts}
+%   \begin{enumerate}
+%       \item Demography will continue shaping kinship dynamics
+%       \item amidst growing family complexity and geographic spread
+%       \item demographers are ideally placed to study these changes
+%   \end{enumerate}
+% \end{frame}
+
+\end{document}
+
+
