@@ -3,3 +3,17 @@
 .RData
 .Ruserdata
 data
+
+# LaTeX intermediate files
+*.aux
+*.log
+*.fdb_latexmk
+*.fls
+*.bcf
+*.blg
+*.bbl
+*.run.xml
+*.out
+*.nav
+*.snm
+*.toc
