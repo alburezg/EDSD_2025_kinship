@@ -1211,7 +1211,7 @@ You will use data on kinship structures to benchmark formal models of kinship.
 For this exercise, you will use the `DemoKin` R package to implement formal models of kinship. 
 You should choose one country and run four different models according to the following specifications:
 
-- One-sex model; approximate male kin using GKP factors
+- One-sex model; approximate kin of both sexes using GKP factors
      - time-invariant rates
      - time-variant rates
 - Two-sex model; approximate male kin using the androgynous assumption
